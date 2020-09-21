@@ -26,7 +26,7 @@ YellowBox.ignoreWarnings([
   "VirtualizedLists should never be nested", // TODO: Remove when fixed
 ]);
 
-export default class BasicTimeLine extends Component {
+export default class SecondFeed extends Component {
   state = {
     userData: null,
   };
@@ -40,7 +40,7 @@ export default class BasicTimeLine extends Component {
   }
 
   componentDidMount() {
-    fetch("https://nhs-services.herokuapp.com/api/patients/2147483647")
+    fetch("https://nhs-services.herokuapp.com/api/patients/1149486687")
       .then((response) => response.json())
       .then((userData) => this.setState({ userData }));
   }
@@ -129,13 +129,6 @@ export default class BasicTimeLine extends Component {
 
         <TimelineInfo
           rawData={this.state.userData.health_recordings[0]}
-          data={this.state.userData.diagnoses[2].diagnosis_name}
-          description={dataDescription.other.message}
-          extras={""}
-        />
-
-        <TimelineInfo
-          rawData={this.state.userData.health_recordings[0]}
           data={this.state.userData.health_recordings[0].heart_rate}
           description={dataDescription.heartRate.message}
           extras={" bpm"}
@@ -143,7 +136,7 @@ export default class BasicTimeLine extends Component {
 
         <TimelineInfo
           rawData={this.state.userData.health_recordings[0]}
-          data={this.state.userData.ward.nurses[0].full_name}
+          data={this.state.userData.ward.nurses[2].full_name}
           description={dataDescription.nurse.message}
           extras={""}
         />
@@ -157,7 +150,7 @@ export default class BasicTimeLine extends Component {
 
         <TimelineInfo
           rawData={this.state.userData.health_recordings[1]}
-          data={this.state.userData.diagnoses[0].treatment}
+          data={this.state.userData.diagnoses[1].treatment}
           description={dataDescription.treatment.message}
           extras={""}
         />
